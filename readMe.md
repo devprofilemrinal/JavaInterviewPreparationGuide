@@ -104,4 +104,5 @@ This repository is organized into carefully crafted sections to help you focus o
 ## 💻 Getting Started
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/JavaInterviewPreparationGuide.git
+   https://github.com/devprofilemrinal/JavaInterviewPreparationGuide.git
+   ```
