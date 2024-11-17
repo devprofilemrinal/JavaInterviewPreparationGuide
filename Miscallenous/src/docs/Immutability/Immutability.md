@@ -91,3 +91,26 @@ memory called the SCP, by following an algorithm like this (this algorithm is kn
    changed during the loading process. However, if String is mutable, then imagine
    loading class A (for example, Class.forName("A")), and, during the loading
    process, its name will get changed to BadA. Now, the BadA objects can do bad things!
+
+### Cons Of String Immutability
+
+1. **String cannot be extended:**
+   An immutable class should be declared final to avoid extensibility. However,
+   developers need to extend the String class in order to add more features, and this
+   limitation can be considered a drawback of immutability.
+
+
+2. **Sensitive data in memory for a long time:**
+   Sensitive data in strings (for example, passwords) may reside in memory (in SCP) for
+   a long time. Being a cache, the SCP takes advantage of special treatment from the
+   garbage collector. More precisely, the SCP is not visited by the garbage collector with
+   the same frequency (cycles) as other memory zones. As a consequence of this special
+   treatment, sensitive data is kept in the SCP for a long time, and can be prone to
+   unwanted usages.
+   In order to avoid this potential drawback, it is advisable to store sensitive data (for
+   example, passwords) in char[] instead of String.
+
+
+3. **OutOfMemoryError:**
+   The SCP is a small memory zone in comparison with others and can be filled pretty
+   quickly. Storing too many string literals in the SCP will lead to OutOfMemoryError.
